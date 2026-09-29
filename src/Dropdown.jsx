@@ -1,7 +1,13 @@
-import { use, useState } from "react";
+import { useState } from "react";
+import styles from "./Dropdown.module.css";
 
 function Dropdown() {
   const [Option, setOption] = useState("");
+  const [Color, setColor] = useState("#f00");
+
+  const handleChange = (e) => {
+    setColor(e.target.value);
+  };
 
   return (
     <>
@@ -16,6 +22,9 @@ function Dropdown() {
         <option value="Goldfisch">Goldfisch</option>
       </select>
       <p>Deine Wahl: {Option}</p>
+      <br />
+      <input type="color" value={Color} onChange={handleChange} />
+      <div style={{ background: Color }} className={styles.colorbox}></div>
     </>
   );
 }
